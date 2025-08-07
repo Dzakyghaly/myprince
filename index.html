@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>For My Prince ❤️</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         padding: 0;
@@ -15,6 +19,7 @@
         justify-content: center;
         align-items: center;
         font-family: "Segoe UI", sans-serif;
+        padding: 20px;
       }
 
       .container {
@@ -22,6 +27,7 @@
         position: relative;
         z-index: 2;
         animation: float 3s ease-in-out infinite alternate;
+        max-width: 100%;
       }
 
       h1 {
@@ -30,6 +36,7 @@
         text-shadow: 0 0 10px #ff4081;
         animation: heartbeat 1.5s infinite;
         margin-bottom: 20px;
+        padding: 0 10px;
       }
 
       .typewriter {
@@ -41,6 +48,7 @@
         animation: typing 5s steps(40, end), blink 0.75s step-end infinite;
         max-width: 100%;
         margin-bottom: 20px;
+        padding: 0 10px;
       }
 
       .heart {
@@ -93,7 +101,6 @@
         }
       }
 
-      /* Animasi salju hati */
       .hearts {
         position: absolute;
         width: 100%;
@@ -122,10 +129,27 @@
           opacity: 0;
         }
       }
+
+      /* RESPONSIVE */
+      @media (max-width: 480px) {
+        .typewriter {
+          font-size: 1.1rem;
+          white-space: normal;
+          border: none;
+          animation: none;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .heart {
+          font-size: 3rem;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- Animasi hati -->
     <div class="hearts">
       <span style="left: 10%; animation-delay: 0s">💖</span>
       <span style="left: 25%; animation-delay: 2s">❤️</span>
@@ -143,10 +167,7 @@
       <div class="heart">❤️</div>
     </div>
 
-    <!-- Musik otomatis -->
     <audio id="bgm" src="music.mp3" autoplay loop></audio>
-
-    <!-- Suara klik lucu -->
     <audio id="clickSound" src="click.mp3" preload="auto"></audio>
 
     <script>
@@ -170,7 +191,6 @@
         }, 1000);
       }
 
-      // Mainkan musik jika diizinkan browser
       window.addEventListener("load", () => {
         const bgm = document.getElementById("bgm");
         bgm.play().catch(() => {
